@@ -37,6 +37,11 @@ public class FindPI extends javax.swing.JFrame {
         jLabel1.setText("How many digit od PI do you want?");
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 16, 1));
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
 
         jButton1.setText("Go!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +95,13 @@ public class FindPI extends javax.swing.JFrame {
        double rounded = round(numberPi, decimalPlace);
        jTextPane1.setText("" +rounded);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        int decimalPlace = (Integer) jSpinner1.getValue();
+       double numberPi = Math.PI;
+       double rounded = round(numberPi, decimalPlace);
+       jTextPane1.setText("" +rounded);
+    }//GEN-LAST:event_jSpinner1StateChanged
 
     public static double round(double valueToRound, int numberOfDecimalPlaces)
     {
